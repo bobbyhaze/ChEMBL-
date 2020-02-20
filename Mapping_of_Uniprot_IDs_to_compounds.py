@@ -3,9 +3,12 @@ from chembl_webresource_client.new_client import new_client
 
 
 if __name__ =='__main__':
+    #Working directory
     wd="C://Users/Kevin/Desktop/Chembl/"
+    #Read input
     data=pd.read_table(wd+'Proteomics_results.txt',header=0)
     data=data.dropna()
+    #Specify column name for Gene Symbols
     proteins=list(data['Gene Symbol'])
     data.index=data['Gene Symbol']
     #print(proteins)
@@ -26,6 +29,7 @@ if __name__ =='__main__':
         except IndexError:
             pass
     #print(Mapped)
+    #Specify name for output
     df=open(wd+'output_mapped.txt',"w+")
     for key in Mapped.keys():
         for comp in Mapped[key]:
